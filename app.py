@@ -1,5 +1,5 @@
 """
-app.py — web aplikacija Studentskog asistenta (Streamlit).
+app.py — web aplikacija asistenta za klimatske promjene (Streamlit).
 
 Pokretanje:  streamlit run app.py
 (ako komanda nije pronađena:  python -m streamlit run app.py)
@@ -22,14 +22,15 @@ MAX_QUESTION_CHARS = 500   # najduže dozvoljeno pitanje (zaštita od zloupotreb
 MAX_QUESTIONS = 20         # najviše pitanja po razgovoru (kontrola troškova)
 
 # ---------------------------------------------------------------- stranica
-st.set_page_config(page_title="Studentski asistent", page_icon="🎓")
-st.title("🎓 Studentski asistent")
+st.set_page_config(page_title="Klima asistent", page_icon="🌍")
+st.title("🌍 Asistent za klimatske promjene")
 
 with st.sidebar:
     st.header("O asistentu")
     st.write(
-        "Odgovaram na pitanja o CV-u, razgovoru za posao, GitHub i LinkedIn profilu, "
-        "učenju programiranja, stipendijama i programu GirlTHing AI Lab."
+        "Odgovaram na pitanja o globalnom zagrijavanju i klimatskim promjenama: "
+        "uzrocima, posljedicama, mjerama ublažavanja i prilagođavanja, "
+        "te situaciji u Bosni i Hercegovini i regiji."
     )
     st.caption("Odgovori su samo iz naše baze znanja. Ispod svakog odgovora su izvori.")
     if st.button("🔄 Novi razgovor"):
@@ -67,7 +68,7 @@ for m in st.session_state.messages:
             st.caption("Izvori: " + ", ".join(m["sources"]))
 
 # ---------------------------------------------------------------- novo pitanje
-question = st.chat_input("Pitaj nešto...")
+question = st.chat_input("Pitaj nešto o klimatskim promjenama...")
 
 if question:
     broj_pitanja = sum(m["role"] == "user" for m in st.session_state.messages)
